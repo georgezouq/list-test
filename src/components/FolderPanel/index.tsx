@@ -8,7 +8,6 @@ const FolderPanel = observer(() => {
   const {setFolder, folder} = useStore()
 
   const handleClick = (e: any) => {
-    console.log("e:", e)
     setFolder(e.key, true)
   }
 

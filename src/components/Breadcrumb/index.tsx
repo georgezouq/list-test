@@ -18,8 +18,6 @@ const BreadCrumbComponent = () => {
     const pathSnippets = pathname.split('/').filter(i => i);
     const extraBreadcrumbItems = [] as any;
 
-    console.log("pathSnippets:", pathSnippets)
-
     pathSnippets.forEach((_: string, index: number) => {
       const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
       Object.keys(breadcrumbNameMap).forEach((item) => {
@@ -32,8 +30,6 @@ const BreadCrumbComponent = () => {
         }
       });
     });
-
-    console.log("extraBreadcrumbItems:", extraBreadcrumbItems)
 
     return [(
       <Breadcrumb.Item key="/">

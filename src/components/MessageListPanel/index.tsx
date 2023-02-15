@@ -107,7 +107,6 @@ const MessageListPanel = observer(() => {
   ];
 
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys as number[]);
   };
 

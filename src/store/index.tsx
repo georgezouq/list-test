@@ -24,7 +24,6 @@ class Store {
 
     const list = useCache ? this.allTickets : (await getTickets()).data.data
 
-    // console.log("rrrrrrrr res.data.data:", res.data.data)
     this.tickets = list.filter((cur: TicketsItem) => {
       if (this.folder === 'inbox' && !cur.archived) {
         return true
@@ -44,8 +43,6 @@ class Store {
     if (!useCache) this.allTickets = list
 
     this.loading = false
-    // console.log("rrrrrrrr res.data.data:",  this.tickets, this.folder)
-
   }
 
   getTickets = async () => {
@@ -65,8 +62,6 @@ class Store {
         cur.archived = true
       }
     })
-
-    console.log("archiveSelected:", newTickets, keys)
 
     this.allTickets = newTickets
 

@@ -27,8 +27,6 @@ const ExtraOperation = observer(({ selectedKeys, onRefresh, clearSelected }: IPr
     // icon: <span style={{backgroundColor: cur}}>★</span>
   }))
 
-  console.log("menuProps:", menuProps)
-
   const handleArchive = () => {
     archiveSelected(selectedKeys)
     clearSelected()
