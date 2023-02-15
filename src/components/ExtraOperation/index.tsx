@@ -1,4 +1,4 @@
-import {Button, Dropdown} from 'antd'
+import {Button, Dropdown, Menu} from 'antd'
 import {UnorderedListOutlined, DatabaseOutlined, StarOutlined, SyncOutlined, DownOutlined} from '@ant-design/icons'
 import styles from './style.module.less'
 import { useStore } from '@/store'
@@ -21,10 +21,10 @@ interface IProps {
 
 const ExtraOperation = observer(({ selectedKeys, onRefresh, clearSelected }: IProps) => {
   const {archiveSelected} = useStore()
-  const menuProps = colors.map(cur => ({
+  const menuItems = colors.map(cur => ({
     label: cur,
     key: cur,
-    // icon: <span style={{backgroundColor: cur}}>★</span>
+    icon: <span style={{color: cur}}>★</span>
   }))
 
   const handleArchive = () => {
@@ -32,11 +32,20 @@ const ExtraOperation = observer(({ selectedKeys, onRefresh, clearSelected }: IPr
     clearSelected()
   }
 
+  const handleColorClick = () => {
+
+  }
+
+  const menuProps = {
+    items: menuItems,
+    onClick: handleColorClick,
+  };
+
   return (
     <div className={styles.extraOperation}>
       <Button className={styles.button} size="small" icon={<SyncOutlined />} type="primary" onClick={onRefresh}>REFRESH</Button>
       <Button className={styles.button} size="small" icon={<DatabaseOutlined />} onClick={handleArchive} type="default">Archive</Button>
-      <Dropdown menu={menuProps as any}>
+      <Dropdown menu={menuProps}>
         <Button className={styles.button} size="small" icon={<StarOutlined />} danger>Star <DownOutlined /></Button>
       </Dropdown>
       <Button className={styles.button} size="small" icon={<UnorderedListOutlined />} type="default"></Button>
