@@ -5,12 +5,14 @@ import styles from './style.module.less'
 const MessageSender = () => {
   return (
     <div className={styles.messageSender}>
-      <Button size="small">
-        <UserOutlined />
-      </Button>
-      <Input />
       <div>
-        <Button danger>REPLY PUBLIC</Button>
+        <Button size="small">
+          <UserOutlined />
+        </Button>
+      </div>
+      <Input.TextArea className={styles.messager} />
+      <div>
+        <Button className={styles.dangerBtn} danger>REPLY PUBLIC</Button>
         <Button type="primary">REPLY PUBLIC</Button>
       </div>
     </div>

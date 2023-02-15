@@ -4,6 +4,6 @@ export const getTickets = () => {
   return axios.get('/api/tickets')
 }
 
-export const getTicket = (id: string) => {
-  return axios.get(`/api/ticket?id=${id}`)
+export const getTicket = (id: number) => {
+  return axios.get(`/api/tickets/${id}`)
 }

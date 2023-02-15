@@ -49,10 +49,10 @@ class Store {
     await this.setFolder(this.folder)
   }
 
-  getTicket = async (id: string) => {
+  getTicket = async (id: number) => {
     const {data} = await getTicket(id)
-    this.curTicket = data.data.ticket
-    this.curTicketMessages = data.data.messages
+    this.curTicket = data.ticket
+    this.curTicketMessages = data.messages
   }
 
   archiveSelected = (keys: number[]) => {
