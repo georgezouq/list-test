@@ -1,0 +1,29 @@
+.userAvatarWrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  
+  .userNameContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .userName {
+      color: var(--active-color);
+      font-size: 12px;
+    }
+
+    .activeStatus {
+      width: 3px;
+      height: 3px;
+      background-color: var(--active-color);
+      margin-right: 5px;
+      border-radius: 1.5px;
+      display: inline-block;
+    }
+  }
+
+  .userNameArea {
+    margin-left: 10px;
+  }
+}

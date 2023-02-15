@@ -47,14 +47,14 @@ const IndexLayout: React.FC<IProps> = ({ children }) => {
           onClick={handleClick}
           items={[
             {
-              key: '/home',
+              key: '/',
               icon: React.createElement(HomeOutlined),
               label: 'Home'
             },
             {
-              key: '/tickets',
+              key: '/messages',
               icon: React.createElement(SnippetsOutlined),
-              label: 'Tickets'
+              label: 'Messages'
             }
           ]}
         />

@@ -1,6 +1,8 @@
 import Panel from "../Panel"
-import {Menu} from 'antd'
+import {Form, Input, Select, Button} from 'antd'
 import {MailOutlined, DatabaseOutlined, StarOutlined, CalendarOutlined, BuildOutlined} from '@ant-design/icons'
+
+const {Option} = Select
 
 const FilterPanel = () => {
   const current = ''
@@ -9,35 +11,41 @@ const FilterPanel = () => {
 
   }
 
+  const handleChange = () => {
+
+  }
+
   return (
     <Panel title="Filter">
-      <Menu
-        onClick={handleClick}
-        defaultOpenKeys={['sub1']}
-        selectedKeys={[current]}
-        mode="inline"
-        items={[{
-          label: 'Inbox',
-          key: 'inbox',
-          icon: <MailOutlined />
-        }, {
-          label: 'Archive',
-          key: 'archive',
-          icon: <DatabaseOutlined />
-        }, {
-          label: 'Starred Tickets',
-          key: 'starredTickets',
-          icon: <StarOutlined />
-        }, {
-          label: 'Booking Confirmed',
-          key: 'bookingConfirmed',
-          icon: <CalendarOutlined />
-        }, {
-          label: 'All Messages',
-          key: 'allMessages',
-          icon: <BuildOutlined />
-        }, ]}
-      />
+      <Form
+        style={{ maxWidth: 600 }}
+      >
+        <Form.Item name="propertyName">
+          <Select
+            placeholder="Property Name"
+            onChange={handleChange}
+            allowClear
+          >
+            <Option value="male">male</Option>
+            <Option value="female">female</Option>
+            <Option value="other">other</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item name="gender">
+          <Input placeholder="Property Tags" />
+        </Form.Item>
+        <Form.Item
+          noStyle
+          shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
+        >
+          <Input placeholder="Confirm number" />
+        </Form.Item>
+        <Form.Item>
+          <Button style={{marginTop: '20px'}} type="primary" htmlType="submit" block>
+            Search
+          </Button>
+        </Form.Item>
+      </Form>
     </Panel>
   )
 }

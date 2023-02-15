@@ -8,3 +8,13 @@ html, body, #__next {
 #__next {
   display: flex;
 }
+
+:root {
+  --active-color: #1790fc;
+}
+
+.activeText {
+  font-size: 14px;
+  color: var(--active-color);
+  cursor: pointer;
+}

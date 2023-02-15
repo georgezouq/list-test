@@ -1,20 +1,22 @@
 import Panel from "../Panel"
 import {Menu} from 'antd'
 import {MailOutlined, DatabaseOutlined, StarOutlined, CalendarOutlined, BuildOutlined} from '@ant-design/icons'
+import { useStore } from "@/store"
+import { observer } from "mobx-react-lite"
 
-const FolderPanel = () => {
-  const current = ''
+const FolderPanel = observer(() => {
+  const {setFolder, folder} = useStore()
 
-  const handleClick = () => {
-
+  const handleClick = (e: any) => {
+    console.log("e:", e)
+    setFolder(e.key, true)
   }
 
   return (
     <Panel title="Folder" style={{marginBottom: '10px'}}>
       <Menu
         onClick={handleClick}
-        defaultOpenKeys={['sub1']}
-        selectedKeys={[current]}
+        selectedKeys={[folder]}
         mode="inline"
         items={[{
           label: 'Inbox',
@@ -40,6 +42,6 @@ const FolderPanel = () => {
       />
     </Panel>
   )
-}
+})
 
 export default FolderPanel
