@@ -131,14 +131,9 @@ const MessageListPanel = observer(() => {
         className={styles.table}
         rowSelection={{
           type: 'checkbox',
-          // getCheckboxProps: (record: TicketsItem) => {
-          //   console.log("record:", record)
-          //   return {
-          //     name: record.id as any,
-          //   }
-          // },
           onChange: onSelectChange
         }}
+        pagination={false}
         dataSource={dataSource}
         columns={columns}
       />

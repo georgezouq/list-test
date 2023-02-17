@@ -20,7 +20,7 @@ interface IProps {
 }
 
 const ExtraOperation = observer(({ selectedKeys, onRefresh, clearSelected }: IProps) => {
-  const {archiveSelected} = useStore()
+  const {archiveSelected, changeStarColor} = useStore()
   const menuItems = colors.map(cur => ({
     label: cur,
     key: cur,
@@ -32,8 +32,8 @@ const ExtraOperation = observer(({ selectedKeys, onRefresh, clearSelected }: IPr
     clearSelected()
   }
 
-  const handleColorClick = () => {
-
+  const handleColorClick = (e: any) => {
+    changeStarColor(selectedKeys, e.key)
   }
 
   const menuProps = {

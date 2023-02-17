@@ -5,12 +5,13 @@ import { useStore } from "@/store"
 import { TabsProps, Spin, Tabs } from "antd"
 import { observer } from "mobx-react-lite"
 import { useRouter } from "next/router"
+import { Tag } from 'antd'
 import { useEffect, useState } from "react"
 import toNumber from "lodash/toNumber"
 import styles from "./style.module.less"
 
 const MessageDetails = observer(() => {
-  const {curTicket, getTicket, loading} = useStore()
+  const {curTicket, getTicket, loading, statistics} = useStore()
   const [mailStatus, setMailStatus] = useState('all')
   const router = useRouter()
   const {id} = router.query
@@ -18,15 +19,15 @@ const MessageDetails = observer(() => {
   const items: TabsProps['items'] = [
     {
       key: 'all',
-      label: `All`,
+      label: <span>All <Tag>{statistics.all}</Tag></span>,
     },
     {
       key: 'public',
-      label: `Public`,
+      label: <span>Public <Tag>{statistics.public}</Tag></span>,
     },
     {
       key: 'private',
-      label: `Private`,
+      label: <span>Private <Tag>{statistics.private}</Tag></span>,
     },
   ];
 
@@ -48,7 +49,7 @@ const MessageDetails = observer(() => {
       <MessageSender />
       <Tabs activeKey={mailStatus} items={items} onChange={handleChange} />
       <div className={styles.messageListScroll}>
-        <MessageListView />
+        <MessageListView mailStatus={mailStatus} />
       </div>
     </Panel>
   )

@@ -5,9 +5,10 @@
 
 .messageWrapper {
   display: flex;
+  align-items: flex-start;
 
   .messageContentWrapper {
-    flex: 1;
+    // flex: 1;
     display: flex;
     max-width: 80%;
   }
@@ -19,6 +20,10 @@
     width: auto;
     display: flex;
     align-items: center;
+
+    span {
+      word-break: initial;
+    }
   }
 
   .messageAvatar {

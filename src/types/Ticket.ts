@@ -1,6 +1,8 @@
+export type TicketMessageType = 'external' | 'internal'
+
 export interface TicketMessage {
   comment: string
-  comment_type: 'external' | ''
+  comment_type: TicketMessageType
   created_at: string
   id: number
   user: {
@@ -47,4 +49,10 @@ export interface IUser {
   ]
   email: string
   name: string
+}
+
+export interface SearchCondition {
+  propertyName: string;
+  propertyTag: string;
+  confirmNumber: number;
 }

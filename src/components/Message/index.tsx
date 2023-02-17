@@ -5,14 +5,17 @@ import UserAvatarVert from '@/components/UserAvatarVert'
 import MessageStatusBar from '../MessageStatusBar';
 import { useState } from 'react';
 import MessageTemplateModal from '../../components/MessageTemplateModal'
+import { observer } from 'mobx-react-lite';
+import { useStore } from '@/store';
 
 interface IProps {
   message: TicketMessage;
 }
 
-const Message = ({ message }: IProps) => {
+const Message = observer(({ message }: IProps) => {
+  const {user} = useStore()
   const [modalOpen, setModalOpen] = useState(false)
-  const isMe = message.comment_type !== 'external'
+  const isMe = message.user.name === user.name
 
   const handleModalOpen = () => {
     setModalOpen(!modalOpen)
@@ -34,6 +37,6 @@ const Message = ({ message }: IProps) => {
       <MessageStatusBar message={message} isMe={isMe} onModalOpen={handleModalOpen} />
     </div>
   )
-}
+})
 
 export default Message
